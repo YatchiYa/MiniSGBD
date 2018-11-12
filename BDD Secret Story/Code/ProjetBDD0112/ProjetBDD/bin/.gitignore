@@ -4,18 +4,10 @@
 /Main.class
 /RelDef.class
 /Singleton.class
-<<<<<<< HEAD
-/application/
-/index/
-/menu/
-/relation/
-/sgbd/
-/HeaderPageInfo.class
-/HeapFile.class
-=======
 /BufferManager.class
 /BufferTable.class
 /InfoPage.class
 /PageId.class
 /DiskManager.class
->>>>>>> f22b31e69da770cb7b28b1d8531676c652deebc7
+/HeaderPageInfo.class
+/HeapFile.class
