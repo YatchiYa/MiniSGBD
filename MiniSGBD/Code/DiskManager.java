@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 public class DiskManager {
 
+	
+	// Yanis Method Done !!!!
+	
+	
+	
 	/**
 	 * Création d'une instance unique pour DiskManager
 	 */

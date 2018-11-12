@@ -123,7 +123,7 @@ public class BufferManager {
 					try{
 						// diskmanager a cree dabord par Yanis
 						
-						// DiskManager.writePage(bufferPool[i].getInf().getPage(), bufferPool[i].getBuffer());
+						DiskManager.WritePage(bufferPool[i].getInf().getPage(), bufferPool[i].getBuffer());
 					}catch(IOException e) {
 						System.out.println("Une erreur s'est produite lors de l'écriture sur disque !");
 						System.out.println("Détails : " + e.getMessage());
