@@ -5,8 +5,33 @@ public class RelDef {
 	private String NomRel;
 	private int nbColone;
 	private List <String> TypeCol;
+	private int  recordSize;
+	private int slotCount;
 	
-	
+	public int getRecordSize() {
+		return recordSize;
+	}
+
+
+
+	public void setRecordSize(int recordSize) {
+		this.recordSize = recordSize;
+	}
+
+
+
+	public int getSlotCount() {
+		return slotCount;
+	}
+
+
+
+	public void setSlotCount(int slotCount) {
+		this.slotCount = slotCount;
+	}
+
+
+
 	public RelDef() {
 		//constructor of Rel Def
 	}
