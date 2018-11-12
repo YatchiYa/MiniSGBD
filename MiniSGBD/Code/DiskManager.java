@@ -14,7 +14,7 @@ public class DiskManager {
 	public static final String PATH ="."+File.separatorChar+"DB"+File.separatorChar+"Data_";
 	public static final long SIZEPAGE =4096;
 	/**
-	 * méthode crée un fichier Data_iFileIdx.rf initialement vide ezrdtfvgh
+	 * méthode crée un fichier Data_iFileIdx.rf initialement vide 
 	 * @param iFileIdx
 	 * @throws IOException
 	 */
