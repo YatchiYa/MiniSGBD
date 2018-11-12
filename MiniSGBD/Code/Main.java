@@ -15,7 +15,7 @@ public class Main {
 			String typeC = sc.nextLine();
 		}
 
-		System.out.println(" add to the DBDef jhgfghkivg");
+		System.out.println(" add to the DBDef yanis");
 		
 		
 		
