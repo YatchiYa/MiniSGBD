@@ -18,12 +18,14 @@ public class DBManager {
 	public static void init() {
 		// the init function
 		System.out.println(" the init function");
-		DBDef.getInstance();
-		DBDef.init();
+		// DBDef.getInstance();
+		// DBDef.init();
 	}
 	
 	public void finish() {
-		DBDef.finish();
+		// DBDef.finish();
+		System.out.println(" finish function of DBManager");
+		
 	}
 	
 	public void processCommande(String commande) {
