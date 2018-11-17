@@ -1,4 +1,5 @@
-
+package sgbd;
+import rel.RelDef;
 
 public class HeapFile {
 	private RelDef relation;

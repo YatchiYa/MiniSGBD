@@ -1,3 +1,4 @@
+package sgbd;
 import java.util.Arrays;
 
 public class BufferTable {

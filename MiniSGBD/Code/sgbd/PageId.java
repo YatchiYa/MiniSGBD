@@ -1,3 +1,4 @@
+package sgbd;
 
 public class PageId {
 

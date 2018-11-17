@@ -1,4 +1,7 @@
+package sgbd;
 import java.util.List;
+
+import rel.RelDef;
 
 public class DBManager {
 	

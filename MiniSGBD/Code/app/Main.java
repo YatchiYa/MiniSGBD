@@ -1,4 +1,7 @@
+package app;
 import java.util.Scanner;
+
+import sgbd.DBManager;
 
 
 public class Main {

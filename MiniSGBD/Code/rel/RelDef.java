@@ -1,3 +1,4 @@
+package rel;
 import java.util.List;
 
 public class RelDef {

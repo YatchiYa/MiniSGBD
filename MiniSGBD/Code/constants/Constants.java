@@ -1,3 +1,4 @@
+package constants;
 
 public class Constants {
 	public static final int PageSize = 4096;
