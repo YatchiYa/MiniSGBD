@@ -19,7 +19,7 @@ public class Commande {
 		switch(action) {
 		
 		case "create":
-			createRel(action);
+			createRel(c);
 			System.out.println("create methode");
 			break;
 		default: 
