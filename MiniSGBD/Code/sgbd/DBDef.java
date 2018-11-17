@@ -1,4 +1,5 @@
 package sgbd;
+import java.util.ArrayList;
 import java.util.List;
 
 import rel.RelDef;
@@ -15,45 +16,69 @@ public class DBDef {
 	
 	
 	
-	private List <RelDef> listRelDef;
+	private ArrayList<RelDef> listRelDef;
 	private int cptRel=0;
 	
 	
-	public DBDef() {
-		// constructor 
-	}
 	
-	public void AddRelation(RelDef rel) {
-		listRelDef.add(rel);
-		cptRel++;
+	public DBDef() {
+		super();
 	}
 
+	/**
+	 * 
+	 * @param rel
+	 */
+	public void AddRelation(RelDef rel) {
+		listRelDef.add(rel);
+	}
 	
-// getter and setter 
-	public List<RelDef> getListRelDef() {
+	/**
+	 * 
+	 */
+	public void incrementCount() {
+		this.cptRel++;
+	}
+
+	/**
+	 * 
+	 */
+	public void reset() {
+		this.cptRel = 0;
+		this.listRelDef = new ArrayList<RelDef>(0);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<RelDef> getListRelDef() {
 		return listRelDef;
 	}
 
-	public void setListRelDef(List<RelDef> listRelDef) {
+
+	public void setListRelDef(ArrayList<RelDef> listRelDef) {
 		this.listRelDef = listRelDef;
 	}
+
 
 	public int getCptRel() {
 		return cptRel;
 	}
 
+
 	public void setCptRel(int cptRel) {
 		this.cptRel = cptRel;
 	}
-	
-	
+
+
 	// init and finish method
 	public static void init() {
-		System.out.println(" the init function of DBDef");
+		
 	}
 	
 	public static void finish() {
-		System.out.println("DBDef is closed ");
+		
 	}
 	
 	

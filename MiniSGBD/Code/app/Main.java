@@ -14,6 +14,13 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		String commande;
 		String exit = "exit";
+		
+		
+
+		System.out.println("feel welcome to mini_SGBD");
+		System.out.println(" tappez votre commande ");
+		
+		
 		do {
 			commande = sc.nextLine();
 			// int nbc = sc.nextInt();

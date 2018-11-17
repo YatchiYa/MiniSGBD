@@ -1,6 +1,9 @@
 package sgbd;
+import java.util.ArrayList;
 import java.util.List;
 
+import Schema.RelSchemaDef;
+import constants.Commande;
 import rel.RelDef;
 
 public class DBManager {
@@ -15,34 +18,61 @@ public class DBManager {
 		// constructor
 	}
 	
+
+	private static DBDef db;
+	
+	
 	public static void init() {
 		// the init function
-		System.out.println(" the init function");
 		// DBDef.getInstance();
-		// DBDef.init();
+		
+		//creation de la dbDef
+		db = new DBDef();
+		
+		db.init();
 	}
 	
 	public void finish() {
-		// DBDef.finish();
-		System.out.println(" finish function of DBManager");
+		db.finish();
 		
 	}
 	
 	public void processCommande(String commande) {
-		
+		Commande.listCommande(commande);
 	}
 	
+	/**
+	 * 
+	 * @param NomRel
+	 * @param nbC
+	 * @param typeC
+	 */
 	
 	// create relation
-	public static void CreateRelation(String NomRel, int nbC, List<String> typeC) {
-		RelDef newRel = new RelDef();
-		newRel.setNomRel(NomRel);
-		newRel.setNbColone(nbC);
-		newRel.setTypeCol(typeC);
+	public static void CreateRelation(String NomRel, int nbC, ArrayList<String> typeC) {
+		RelSchemaDef new_Rel = new RelSchemaDef(NomRel, nbC);
+		new_Rel.setType_col(typeC);
 		
-		DBDef db = new DBDef();
+		// creation de la relation avec la nouvelle rel
+		RelDef relDef = new RelDef(new_Rel);
+		// ajouter a la base relation
+		db.AddRelation(relDef);
+		// incrementer le count de la base
+		db.incrementCount();
+		
+		System.out.print("add relation Done");
+		
+		
+	}
 
-		db.AddRelation(newRel);
+	
+	
+	public static DBDef getDb() {
+		return db;
+	}
+
+	public static void setDb(DBDef db) {
+		DBManager.db = db;
 	}
 	
 }
