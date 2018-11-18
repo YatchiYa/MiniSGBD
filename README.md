@@ -10,5 +10,5 @@ on essaye de finir chaque chose en son temps !!
 n'oubliez pas de reviser Algo !! haha 
 et de checker JavaFx et si sa marche sur la machine de l'UFR , y'a des comptes qui sont bloquer.
 
-
+j'arrive pas a voir ce que t'a fait ptit joueur ?
 peace & love !!!! 
