@@ -1,4 +1,6 @@
 package sgbd;
+import java.io.IOException;
+
 import rel.RelDef;
 
 public class HeapFile {
@@ -13,11 +15,23 @@ public class HeapFile {
 	}
 
 	public HeapFile(RelDef relation) {
-		
 		this.relation = relation;
-	}
+		}
 	
-	public  void createNewOnDisk () {
+	
+	/*public void createNewOnDisk () throws IOException {
+		DiskManager.CreateFile(relation.getFileIdx());	
+	}
+	*/
+	
+	/*public void getFreePageId(oPageId) {
 		
 	}
+	*/
+	
+	/*public void updateHeaderWithTakenSlot(iPageId) {
+		
+	}
+	*/
+	
 }
