@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import constants.Constants;
-import index.Index;
 import rel.RelDef;
 
 public class DBDef {
@@ -94,7 +92,9 @@ public class DBDef {
 		try(
 				FileOutputStream fos = new FileOutputStream(fichier);
 				ObjectOutputStream oos =  new ObjectOutputStream(fos);){
-			// sérialization de l'objet
+			
+			
+			// ecriture sur fichier peut etre ? 
 			oos.writeObject(db);
 		}
 		
@@ -118,7 +118,8 @@ public class DBDef {
 					FileInputStream fis = new FileInputStream(fichier);
 					ObjectInputStream ois =  new ObjectInputStream(fis);){
 
-
+				
+				// lecture sur le fichier ??
 				db = (DBDef)ois.readObject();
 			}
 		}
