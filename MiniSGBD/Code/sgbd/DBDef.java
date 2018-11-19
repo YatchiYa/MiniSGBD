@@ -1,7 +1,16 @@
 package sgbd;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import constants.Constants;
+import index.Index;
 import rel.RelDef;
 
 public class DBDef {
@@ -15,9 +24,9 @@ public class DBDef {
 	
 	
 	
-	
 	private ArrayList<RelDef> listRelDef;
 	private int cptRel=0;
+	private static DBDef db;
 	
 	
 	
@@ -71,16 +80,49 @@ public class DBDef {
 		this.cptRel = cptRel;
 	}
 
+	
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public static void finish() throws FileNotFoundException, IOException {
+		
+		File fichier =  new File(Constants.repositoryDB);
 
-	// init and finish method
-	public static void init() {
+		 // ouverture d'un flux sur un fichier
+		try(
+				FileOutputStream fos = new FileOutputStream(fichier);
+				ObjectOutputStream oos =  new ObjectOutputStream(fos);){
+			// sérialization de l'objet
+			oos.writeObject(db);
+		}
 		
+		BufferManager.flushAll();
 	}
 	
-	public static void finish() {
-		
-	}
 	
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public static void init() throws FileNotFoundException, IOException, ClassNotFoundException { 
+		db = new DBDef();
+		
+		File fichier =  new File(Constants.repositoryDB);
+		if(fichier.exists()) {
+			// ouverture d'un flux sur un fichier
+			try(
+					FileInputStream fis = new FileInputStream(fichier);
+					ObjectInputStream ois =  new ObjectInputStream(fis);){
+
+
+				db = (DBDef)ois.readObject();
+			}
+		}
+	}
 	
 	
 }

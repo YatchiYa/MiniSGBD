@@ -19,8 +19,8 @@ public class Commande {
 		switch(action) {
 		
 		case "create":
-			createRel(c);
 			System.out.println("create methode");
+			createRel(c);
 			break;
 		default: 
 			System.out.println("don t know the commande ");

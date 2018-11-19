@@ -1,7 +1,11 @@
 package constants;
 
-public class Constants {
-	public static final int PageSize = 4096;
+import java.io.File;
+
+public class Constants {	
+	
+	public static final String repositoryDB = "."+File.separatorChar+"DB"+File.separatorChar+"Catalog.def";
+	public static final int pageSize = 4096;
 	public static final String dir = "DB";
 	
 }
