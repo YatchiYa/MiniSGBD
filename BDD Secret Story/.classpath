@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Code/ProjetBDD0112/ProjetBDD/src"/>
+	<classpathentry kind="lib" path="ProjetBDD0112.jar"/>
+	<classpathentry kind="output" path="Code/ProjetBDD0112/ProjetBDD/bin"/>
+</classpath>
