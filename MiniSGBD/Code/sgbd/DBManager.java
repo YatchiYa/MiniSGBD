@@ -1,4 +1,6 @@
 package sgbd;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class DBManager {
 	private static DBDef db;
 	
 	
-	public static void init() {
+	public static void init() throws FileNotFoundException, ClassNotFoundException, IOException {
 		// the init function
 		// DBDef.getInstance();
 		
@@ -32,7 +34,7 @@ public class DBManager {
 		db.init();
 	}
 	
-	public void finish() {
+	public void finish() throws FileNotFoundException, IOException {
 		db.finish();
 		
 	}
