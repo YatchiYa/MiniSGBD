@@ -1,12 +1,14 @@
 package app;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import sgbd.DBManager;
-
+// Main
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
 		
 		DBManager dbManager = new DBManager();
 		dbManager.init();
