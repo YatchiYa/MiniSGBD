@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-
+//  commentaire !!! 
 public class BufferManager {
 	
 	// constant a deplacer au file constante 
