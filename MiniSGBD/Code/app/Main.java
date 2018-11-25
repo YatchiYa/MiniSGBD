@@ -31,6 +31,7 @@ public class Main {
 				dbManager.finish();
 			}
 			else {
+				
 				dbManager.processCommande(commande);
 			}
 			

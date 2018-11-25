@@ -23,15 +23,18 @@ public class HeapFile {
 		DiskManager.CreateFile(relation.getFileIdx());	
 	}
 	*/
-	
-	/*public void getFreePageId(oPageId) {
+	/*
+	public void getFreePageId(oPageId) {
+		int idFile = relation.getFileId();
+	*/	
+		
 		
 	}
-	*/
+	
 	
 	/*public void updateHeaderWithTakenSlot(iPageId) {
 		
 	}
 	*/
 	
-}
+

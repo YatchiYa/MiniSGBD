@@ -9,7 +9,7 @@ import constants.Commande;
 import rel.RelDef;
 
 public class DBManager {
-	
+	Commande cmd= new Commande();
 	private static final DBManager INSTANCE = new DBManager();
 	
 	public DBManager getInstance(){
@@ -40,7 +40,9 @@ public class DBManager {
 	}
 	
 	public void processCommande(String commande) {
-		Commande.listCommande(commande);
+
+		cmd.listCommande(commande);
+		
 	}
 	
 	/**
@@ -53,12 +55,15 @@ public class DBManager {
 	// create relation
 	public static void CreateRelation(String NomRel, int nbC, ArrayList<String> typeC) {
 		RelSchemaDef new_Rel = new RelSchemaDef(NomRel, nbC);
-		new_Rel.setType_col(typeC);
 		
+
+		new_Rel.setType_col(typeC);
 		// creation de la relation avec la nouvelle rel
 		RelDef relDef = new RelDef(new_Rel);
 		// ajouter a la base relation
 		db.AddRelation(relDef);
+		
+
 		// incrementer le count de la base
 		db.incrementCount();
 		

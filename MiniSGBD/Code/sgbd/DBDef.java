@@ -22,7 +22,7 @@ public class DBDef {
 	
 	
 	
-	private ArrayList<RelDef> listRelDef;
+	private ArrayList<RelDef> listRelDef = new ArrayList<>(0);
 	private int cptRel=0;
 	private static DBDef db;
 	
