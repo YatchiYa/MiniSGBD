@@ -12,6 +12,10 @@ import constants.Constants;
 import rel.RelDef;
 
 public class DBDef {
+	
+	
+	// Cette classe contient une liste de RelDef et un entier qui representele  compteur de relations
+	 
 	// verifier que c'est un singleton a faire !!!!!
 
 	private static final DBDef INSTANCE = new DBDef();
