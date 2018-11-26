@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import sgbd.DBManager;
+import sgbd.DiskManager;
 // Main
+import sgbd.PageId;
 
 public class Main {
 
@@ -16,6 +18,18 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		String commande;
 		String exit = "exit";
+		
+		DiskManager d = new DiskManager();
+		
+		/** byte[] t = new byte[100];
+		
+		PageId i = new PageId(5,5);
+		d.CreateFile(5);
+		d.AddPage(5);
+		d.ReadPage(i, t);
+		d.WritePage(i, t);
+		
+		*/
 		
 		
 		System.out.println("Feel welcome to mini_SGBD");
