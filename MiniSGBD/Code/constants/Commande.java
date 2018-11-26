@@ -40,8 +40,9 @@ public class Commande {
 		}catch(IllegalArgumentException e) {
 			System.out.println(e);
 		}
+		System.out.println("Appel a la methode Creation relation");
 		DBManager.CreateRelation(n_rel.getNom_rel(), n_rel.getNb_col(), n_rel.getType_col());
-		System.out.print("done");
+		
 		
 	}
 	

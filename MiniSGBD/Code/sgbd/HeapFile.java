@@ -23,13 +23,14 @@ public class HeapFile {
 		DiskManager.CreateFile(relation.getFileIdx());	
 	}
 	*/
-	/*
-	public void getFreePageId(oPageId) {
-		int idFile = relation.getFileId();
-	*/	
+	
+	public void getFreePageId(PageId oPageId) {
+		int idxFile = relation.getFileIdx();
+		
 		
 		
 	}
+}
 	
 	
 	/*public void updateHeaderWithTakenSlot(iPageId) {

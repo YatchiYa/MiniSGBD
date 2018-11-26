@@ -67,7 +67,7 @@ public class DBManager {
 		// incrementer le count de la base
 		db.incrementCount();
 		
-		System.out.print("add relation Done");
+		System.out.println("add relation Done");
 		
 		
 	}
