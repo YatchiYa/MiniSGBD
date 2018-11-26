@@ -89,7 +89,7 @@ public class DBDef {
 	 */
 	public static void finish() throws FileNotFoundException, IOException {
 		
-		File fichier =  new File(Constants.repositoryDB);
+		File fichier =  new File(constants.Constants.PATH);
 
 		 // ouverture d'un flux sur un fichier
 		try(
@@ -114,7 +114,7 @@ public class DBDef {
 	public static void init() throws FileNotFoundException, IOException, ClassNotFoundException { 
 		db = new DBDef();
 		
-		File fichier =  new File(Constants.repositoryDB);
+		File fichier =  new File(constants.Constants.PATH);
 		if(fichier.exists()) {
 			// ouverture d'un flux sur un fichier
 			try(

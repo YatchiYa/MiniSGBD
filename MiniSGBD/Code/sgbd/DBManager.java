@@ -1,4 +1,5 @@
 package sgbd;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,13 +18,14 @@ public class DBManager {
 	      return INSTANCE;
 	   }
 	
+	
+	private static DBDef db;
+	private static FileManager file;
+	private static ArrayList<HeapFile> listeHeapFile;
+
 	public DBManager() {
 		// constructor
 	}
-	
-
-	private static DBDef db;
-	
 	
 	public static void init() throws FileNotFoundException, ClassNotFoundException, IOException {
 		// the init function
@@ -31,8 +33,10 @@ public class DBManager {
 		
 		//creation de la dbDef
 		db = new DBDef();
+		file = new FileManager();
 		
 		db.init();
+		file.init(db);
 	}
 	
 	public void finish() throws FileNotFoundException, IOException {
@@ -68,6 +72,60 @@ public class DBManager {
 		
 	}
 
+
+	// insert method !! 
+	public static void insert(String nom_rel,ArrayList<String> valeurs) throws IOException {
+		
+		
+	}
+	
+	
+
+	// clean method 	
+	
+	public static void clean() throws FileNotFoundException, ClassNotFoundException, IOException {
+		
+		//reinitialise le bufferPool et écrit les buffers sur disque si besoin
+		BufferManager.flushAll();
+		
+
+		File catalogDef = new File(constants.Constants.catalogRep);
+		
+		// trying to delete the file catalog
+		try {
+			catalogDef.delete();
+		}catch(Exception e) {
+			System.out.println(" erreur de suppression de fichier catalog " + e);
+		}
+		
+		
+		//suppression des relations
+		for(int i = 0; i< listeHeapFile.size(); i++) {		// heap file pas encore defeni !!!! 
+			
+			File dataRf = new File(constants.Constants.PATH + i + ".rf");
+			try {
+				dataRf.delete();
+				System.out.println("Suppression ... Relation supprimée !");
+			}catch(Exception e) {
+				System.out.println(" erreur de suppression de la relation : " + e);
+			}
+		}
+		
+		// fonction reset defini dans la DBDef pour remetre le compteur a zero.
+		db.reset();
+		
+		// on vide la list heap file ----> a faire 
+		
+		
+		
+		
+		// message d'affichage final 
+		System.out.println("DATA BASE deleted !!!");
+			
+	}
+	
+	
+	
 	
 	
 	public static DBDef getDb() {
