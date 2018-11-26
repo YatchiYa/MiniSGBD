@@ -67,7 +67,7 @@ public class DiskManager {
 	 * @throws IOException
 	 */
 	public static void WritePage(PageId iPageId,byte[] iBuffer)throws IOException {
-		RandomAccessFile rwF = new RandomAccessFile(PATH+iPageId.getFileIdx()+".rf", "rw"); 
+		RandomAccessFile rwF = new RandomAccessFile(PATH + iPageId.getFileIdx()+".rf", "rw"); 
 		rwF.seek(iPageId.getPageIdx()*SIZEPAGE);
 		rwF.readFully(iBuffer);
 		rwF.close();

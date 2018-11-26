@@ -8,6 +8,7 @@ import java.util.List;
 import Schema.RelSchemaDef;
 import constants.Commande;
 import rel.RelDef;
+import rel.Record;
 
 public class DBManager {
 	Commande cmd= new Commande();
@@ -74,10 +75,33 @@ public class DBManager {
 
 
 	// insert method !! 
-	public static void insert(String nom_rel,ArrayList<String> valeurs) throws IOException {
+
+	public static void insert(String nomRelation,ArrayList<String> listValeurs) throws IOException {
+		Record r = new Record();
+		r.setListValues(listValeurs);
 		
+		ArrayList<RelDef> list_rel = db.getListRelDef();
+		RelDef relFind = null;
+		boolean find = false;
 		
+		for(int i = 0;i<list_rel.size();i++) {
+			String nameRel = list_rel.get(i).get(i).getNom_rel();
+			if(nomRelation.equals(nameRel)) {
+				relFind = list_rel.get(i);
+				find = true;
+				break;
+			}
+		}
+		
+		if(find) {
+			HeapFile hf = new HeapFile(relFind);
+			hf.insertRecord(r);
+		}
+		else {
+			System.out.println("*** Erreur ! Ce nom de relation n'existe pas ! Veuillez ressayer. ***\n");
+		}	
 	}
+	
 	
 	
 

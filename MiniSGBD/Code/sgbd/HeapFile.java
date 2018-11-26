@@ -1,6 +1,7 @@
 package sgbd;
 import java.io.IOException;
 
+import rel.Record;
 import rel.RelDef;
 
 public class HeapFile {
@@ -57,6 +58,11 @@ public class HeapFile {
 		PageId hp=  new PageId(FileIdxHP,0);
 		byte[ ] bufferHeaderPage = BufferManager.getPage(hp);
 		HeaderPageInfo hpi = new HeaderPageInfo(0);
+	}
+
+	public void insertRecord(Record r) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

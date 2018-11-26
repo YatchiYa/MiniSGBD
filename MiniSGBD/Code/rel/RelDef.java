@@ -60,6 +60,12 @@ public class RelDef {
 	}
 
 
+	public RelSchemaDef get(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 	
 }

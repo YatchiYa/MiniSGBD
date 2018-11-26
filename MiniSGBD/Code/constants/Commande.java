@@ -22,6 +22,10 @@ public class Commande {
 			System.out.println("create methode");
 			createRel(c);
 			break;
+		case "insert":
+			System.out.println("insert methode");
+			insertRel(c);
+			break;
 		default: 
 			System.out.println("don t know the commande ");
 			break;
@@ -78,6 +82,12 @@ public class Commande {
 		}
 
 		return relation;
+		
+	}
+	
+	
+public static void insertRel(String commande) {
+		
 		
 	}
 }
