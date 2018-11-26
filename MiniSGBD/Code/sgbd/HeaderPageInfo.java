@@ -13,8 +13,8 @@ public class HeaderPageInfo {
 		public HeaderPageInfo(int dataPageCount) {
 			
 			this.dataPageCount =0;
-			this.pageIdx =new ArrayList<Integer>(dataPageCount);;
-			this.freeSlot = new ArrayList<Integer>(dataPageCount);;
+			this.pageIdx =null;//new ArrayList<Integer>(dataPageCount);;
+			this.freeSlot = null; //new ArrayList<Integer>(dataPageCount);;
 		}
 		
 		public int getDataPageCount() {
@@ -93,7 +93,7 @@ public class HeaderPageInfo {
 		
 		
 		/**
-		 * 
+		 *//
 		 * @param headerPage
 		 * @param headerF
 		 * @throws IOException

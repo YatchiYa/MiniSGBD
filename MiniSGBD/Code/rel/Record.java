@@ -3,14 +3,14 @@ package rel;
 import java.util.ArrayList;
 
 public class Record {
-	private ArrayList<String> listValues;
+	private ArrayList<String> values;
 
 	public ArrayList<String> getListValues() {
-		return listValues;
+		return values;
 	}
 
 	public void setListValues(ArrayList<String> listValues) {
-		this.listValues = listValues;
+		this.values = values;
 	}
 	
 	
