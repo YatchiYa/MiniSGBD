@@ -4,12 +4,10 @@ public class Rid {
 	
 	private PageId pageId;
 	private int slotIdx;
+	
 	public PageId getPageId() {
 		return pageId;
 	}
-	
-	
-	
 	
 	
 	public void setPageId(PageId pageId) {
