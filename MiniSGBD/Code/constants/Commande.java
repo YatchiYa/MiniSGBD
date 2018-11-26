@@ -33,7 +33,6 @@ public class Commande {
 	public static void createRel(String commande) {
 		
 		RelSchemaDef n_rel = new RelSchemaDef();
-		
 		try{
 
 			n_rel = getRelationAdded(commande.substring(7));
@@ -42,8 +41,8 @@ public class Commande {
 			System.out.println(e);
 		}
 		
+		System.out.println("Appel a la methode Creation relation");
 		DBManager.CreateRelation(n_rel.getNom_rel(), n_rel.getNb_col(), n_rel.getType_col());
-		System.out.print("done");
 		
 	}
 	
@@ -73,9 +72,11 @@ public class Commande {
 			else {
 				System.out.println("doesn t much");
 			}
+			ArrayList<String> type2= new ArrayList<String>(0);
+			type2.add(type);		
+			relation.setType_col(type2);
 		}
 
-		relation.setType_col(typeCol);
 		return relation;
 		
 	}

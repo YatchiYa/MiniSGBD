@@ -9,6 +9,7 @@ import constants.Commande;
 import rel.RelDef;
 
 public class DBManager {
+	Commande cmd= new Commande();
 	
 	private static final DBManager INSTANCE = new DBManager();
 	
@@ -35,12 +36,12 @@ public class DBManager {
 	}
 	
 	public void finish() throws FileNotFoundException, IOException {
-		db.finish();
+		// db.finish();
 		
 	}
 	
 	public void processCommande(String commande) {
-		Commande.listCommande(commande);
+		cmd.listCommande(commande);
 	}
 	
 	/**
@@ -62,7 +63,7 @@ public class DBManager {
 		// incrementer le count de la base
 		db.incrementCount();
 		
-		System.out.print("add relation Done");
+		System.out.println("add relation Done");
 		
 		
 	}

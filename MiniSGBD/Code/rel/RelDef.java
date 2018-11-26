@@ -14,7 +14,6 @@ public class RelDef {
 	 * @param relDef
 	 */
 	public RelDef(RelSchemaDef relDef) {
-		super();
 		this.relDef = relDef;
 	}
 	

@@ -18,12 +18,16 @@ public class Main {
 		String exit = "exit";
 		
 		
-
-		System.out.println("feel welcome to mini_SGBD");
+		System.out.println("Feel welcome to mini_SGBD");
 		System.out.println(" tappez votre commande ");
+		System.out.println("(\\_/)");
+		System.out.println("( •,•)");
+		System.out.println("(\")_(\")");
+		
 		
 		
 		do {
+			
 			commande = sc.nextLine();
 			// int nbc = sc.nextInt();
 			// String typeC = sc.nextLine();
@@ -31,6 +35,7 @@ public class Main {
 				dbManager.finish();
 			}
 			else {
+				
 				dbManager.processCommande(commande);
 			}
 			
