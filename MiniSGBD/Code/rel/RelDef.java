@@ -6,14 +6,15 @@ import Schema.RelSchemaDef;
 public class RelDef {
 		
 	private RelSchemaDef relDef;
-	private int recordSize,slotCount;
+	public int recordSize,slotCount;
 	private int fileIdx;
 	
 	/**
 	 * 
 	 * @param relDef
 	 */
-	public RelDef(RelSchemaDef relDef) {
+	public RelDef(RelSchemaDef relDef,int fileIdx, int recordSize, int slotCount) {
+		super();
 		this.relDef = relDef;
 	}
 	
