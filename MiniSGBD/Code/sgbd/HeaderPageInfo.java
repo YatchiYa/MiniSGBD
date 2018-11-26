@@ -93,7 +93,7 @@ public class HeaderPageInfo {
 		
 		
 		/**
-		 *//
+		 *
 		 * @param headerPage
 		 * @param headerF
 		 * @throws IOException
