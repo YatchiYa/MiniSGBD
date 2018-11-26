@@ -35,7 +35,7 @@ public class DBManager {
 	}
 	
 	public void finish() throws FileNotFoundException, IOException {
-		db.finish();
+		//db.finish();
 		
 	}
 	
