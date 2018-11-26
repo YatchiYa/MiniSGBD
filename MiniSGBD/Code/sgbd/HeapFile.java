@@ -30,9 +30,10 @@ public class HeapFile {
 		//on crée une instance de la Header Page
 		PageId hp= new PageId(relation.getFileIdx(),0);
 		// ajout de la HeaderPage je suis pas sur !!!!
-		DiskManager.AddPage(relation.getFileIdx(), 0);    // revenir revoir plus tard 
 		
+		DiskManager.AddPage(relation.getFileIdx());    // revenir revoir plus tard 
 		
+		// recuperation du buffer de la Header Page via le BufferManager
 		byte[] bufferHeaderPage = BufferManager.getPage(hp);
 		// construire une HeaderPageInfo toute fraîche (avec donc le dataPageCount=0)
 		HeaderPageInfo Hpi = new HeaderPageInfo(0);
@@ -42,9 +43,9 @@ public class HeapFile {
 		
 	}
 	
-	
-	public void getFreePageId(PageId oPageId) throws IOException {
-		byte[ ] bufferHeaderPage = BufferManager.getPage(oPageId);
+	public PageId getFreePageId() throws IOException {
+		byte[ ] bufferHeaderPage = BufferManager.getPage(null);
+		return null;
 	}
 	 
 	/**

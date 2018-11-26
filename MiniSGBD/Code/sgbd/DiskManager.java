@@ -35,7 +35,7 @@ public class DiskManager {
 	 * @return 
 	 * @throws IOException
 	 */
-	public static PageId AddPage(int iFileIdx, int oPageId) throws IOException{
+	public static PageId AddPage(int iFileIdx) throws IOException{
 		RandomAccessFile rwF = new RandomAccessFile(PATH+iFileIdx+".rf","rw");
 		long longueur =rwF.length();
 		int indice =(int)(longueur/SIZEPAGE);

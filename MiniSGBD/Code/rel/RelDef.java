@@ -13,7 +13,8 @@ public class RelDef {
 	 * 
 	 * @param relDef
 	 */
-	public RelDef(RelSchemaDef relDef) {
+	public RelDef(RelSchemaDef relDef,int fileIdx, int recordSize, int slotCount) {
+		super();
 		this.relDef = relDef;
 	}
 	
