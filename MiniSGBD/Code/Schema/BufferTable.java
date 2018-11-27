@@ -1,28 +1,28 @@
-package sgbd;
+package Schema;
 import java.util.Arrays;
 
 public class BufferTable {
 
 	private static final long sizePage = 4096;
 	
-	private InfoPage inf;
+	private Frame frame;
 	private byte[] buffer;
 
 	
-	public BufferTable(InfoPage inf, byte[] buffer) {
+	public BufferTable(Frame frame, byte[] buffer) {
 		super();
-		this.inf = inf;
-		this.buffer = buffer;
+		this.frame = new Frame();
+		this.buffer = new byte[(int)constants.Constants.pageSize];
 	}
 
 	
 	
-	public InfoPage getInf() {
-		return inf;
+	public Frame getframe() {
+		return frame;
 	}
 
-	public void setInf(InfoPage inf) {
-		this.inf = inf;
+	public void setframe(Frame frame) {
+		this.frame = frame;
 	}
 
 	public static long getSizepage() {
@@ -49,7 +49,7 @@ public class BufferTable {
 
 	@Override
 	public String toString() {
-		return "BufferTable [inf=" + inf + ", buffer=" + Arrays.toString(buffer) + "]";
+		return "BufferTable [frame=" + frame + ", buffer=" + Arrays.toString(buffer) + "]";
 	}
 	
 	

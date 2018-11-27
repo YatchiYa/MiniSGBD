@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Schema.RelSchemaDef;
-import constants.Commande;
+import gestion.Commande;
 import rel.RelDef;
 import rel.Record;
 
@@ -34,15 +34,14 @@ public class DBManager {
 		
 		//creation de la dbDef
 		db = new DBDef();
-		file = new FileManager();
 		
 		db.init();
-		file.init(db);
+		FileManager.init(db);
 	}
 	
 	public void finish() throws FileNotFoundException, IOException {
 		// db.finish();
-		
+		BufferManager.flushAll();
 	}
 	
 	public void processCommande(String commande) {

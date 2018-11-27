@@ -1,22 +1,38 @@
-package sgbd;
+package Schema;
 
 import java.util.Date;
 
 
-public class InfoPage {
+public class Frame {
 	
 	private PageId page;
 	private int pinCount;
 	private int dirtyFlag;
+	private Date initialTimeFrame;
 	
 	
-	public InfoPage(PageId page, int pinCount, int dirtyFlag) {
+	public Frame(PageId page, int pinCount, int dirtyFlag) {
 		super();
 		this.page = page;
-		this.pinCount = pinCount;
-		this.dirtyFlag = dirtyFlag;
+		this.pinCount = 0;
+		this.dirtyFlag = 0;
+		this.initialTimeFrame = null;
+	}
+	
+	public Frame() {
 	}
 
+	
+	public Date getInitialTimeFrame() {
+		return initialTimeFrame;
+	}
+	public void setInitialTimeFrame(Date initialTimeFrame) {
+		this.initialTimeFrame = initialTimeFrame;
+	}
+	
+	public void rezTime() {
+		this.initialTimeFrame= new Date();
+	}
 
 	public PageId getPage() {
 		return page;

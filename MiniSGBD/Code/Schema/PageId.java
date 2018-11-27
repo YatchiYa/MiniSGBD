@@ -1,4 +1,4 @@
-package sgbd;
+package Schema;
 
 public class PageId {
 

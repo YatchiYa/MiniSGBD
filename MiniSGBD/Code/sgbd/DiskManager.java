@@ -2,6 +2,8 @@ package sgbd;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+
+import Schema.PageId;
 public class DiskManager {
 
 	

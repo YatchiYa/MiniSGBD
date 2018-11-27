@@ -3,10 +3,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import Schema.PageId;
 import sgbd.DBManager;
 import sgbd.DiskManager;
-// Main
-import sgbd.PageId;
 
 public class Main {
 

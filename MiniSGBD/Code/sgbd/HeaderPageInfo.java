@@ -17,6 +17,21 @@ public class HeaderPageInfo {
 			this.freeSlot = null; //new ArrayList<Integer>(dataPageCount);;
 		}
 		
+		public HeaderPageInfo() {
+			this(0);
+		}
+		
+		public void incrDataPageCount() {
+			dataPageCount++;
+		}
+		
+		public void addSlot(Integer i) {
+			freeSlot.add(i);
+		}
+		public void addPageIdx(Integer i) {
+			pageIdx.add(i);
+		}
+		
 		public int getDataPageCount() {
 			return dataPageCount;
 		}
@@ -89,7 +104,7 @@ public class HeaderPageInfo {
 				i++;
 			}
 					
-			}
+		}
 		
 		
 		/**
