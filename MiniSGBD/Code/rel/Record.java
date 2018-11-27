@@ -5,6 +5,17 @@ import java.util.ArrayList;
 public class Record {
 	private ArrayList<String> values;
 
+	
+	
+
+	public Record(ArrayList<String> values) {
+		this.values = values;
+	}
+
+	public Record() {
+		super();
+	}
+
 	public ArrayList<String> getListValues() {
 		return values;
 	}
