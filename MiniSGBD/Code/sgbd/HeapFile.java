@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import Schema.PageId;
 import Schema.RelSchemaDef;
+import Schema.bytemap;
 import rel.Record;
 import rel.RelDef;
 
@@ -206,12 +207,45 @@ public class HeapFile {
 		
 	}
 	
-	
+	public void insertRecordInPage(Record iRecord, PageId iPageId) throws IOException {
+		byte[] b_page = BufferManager.getPage(iPageId);
+		bytemap bytMap = new bytemap();
+		
+		int nbSlot = relation.getSlotCount();
+		// reading the bytmap page
+		ByteBuffer buffer = ByteBuffer.wrap(b_page);
+		
+		//lecture de la bitmap (nbSlot bytes)
+		for(int i = 0; i<nbSlot; i++) {
+			Byte indice = new Byte(buffer.get());
+			bytMap.addSlotIndice(indice);
+		}
+		// verifiction que l'element est dans la liste
+		ArrayList<Byte> slot_indice = bytMap.getSlotIndice();
+		int checkIdx = slot_indice.indexOf(new Byte((byte)0));
+		if(checkIdx == -1) {
+			BufferManager.freePageId(iPageId, 0);
+		}
+		else {
+			int slot_c = relation.getSlotCount();
+			int record_s = relation.getRecordSize();
+			
+			writeRecordInBuffer(iRecord, b_page, slot_c + checkIdx*record_s);
+								
+			ArrayList<Byte> map = bytMap.getSlotIndice();			
+			
+			for(int i = 0; i<nbSlot; i++){
+				buffer.put(map.get(i).byteValue());
+			}
+			BufferManager.freePageId(iPageId, 1);
+		}
+		
+	}
 	
 	
 	
 	public void insertRecord(Record r) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
