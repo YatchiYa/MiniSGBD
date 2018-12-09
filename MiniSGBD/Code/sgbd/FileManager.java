@@ -3,9 +3,12 @@ package sgbd;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import Schema.RelSchemaDef;
 import rel.RelDef;
+import rel.Record;
 
+//
 public class FileManager {
 	
 	private static final FileManager INSTANCE = new FileManager();
@@ -16,6 +19,7 @@ public class FileManager {
 	}
 
 	private static DBDef db = new DBDef();
+	private static ArrayList<HeapFile> listeHeapFile;
 	
 	public static DBDef getDb() {
 		return db;
@@ -26,7 +30,6 @@ public class FileManager {
 		FileManager.db = db;
 	}
 
-	private static ArrayList<HeapFile> listeHeapFile;
 	
 	
 	public static void init() {
@@ -41,14 +44,20 @@ public class FileManager {
 	
 	public void createNewHeapFile(RelDef iRelDef) throws IOException {
 		HeapFile hp = new HeapFile(iRelDef);
-		listeHeapFile = new ArrayList<HeapFile>(0);
 		listeHeapFile.add(hp);
 		hp.createNewOnDisk();
 		
 	}
 	
 	
-	
+	public void insertRecordInRelation(RelDef iRelationName, Record iRecord) throws IOException {
+		
+		for(HeapFile l : listeHeapFile) {
+			if(l.getRelation() == iRelationName) {
+				l.insertRecord(iRecord);
+			}
+		}
+	}
 	
 	
 	public static ArrayList<HeapFile> getListeHeapFile() {
