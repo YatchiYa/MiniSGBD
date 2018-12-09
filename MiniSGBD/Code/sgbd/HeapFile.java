@@ -4,6 +4,7 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 import Schema.PageId;
+import Schema.RelSchemaDef;
 import rel.Record;
 import rel.RelDef;
 
@@ -163,6 +164,52 @@ public class HeapFile {
 		
 	}
 
+	
+	public void writeRecordInBuffer(Record iRecord, byte[] ioBuffer, int  iSlotIdx) {
+		//set the relation
+		RelSchemaDef schemaRelation = relation.getRelDef();
+		// get the different attributes
+		ArrayList<String> type_checkCol = schemaRelation.getType_col();
+		ArrayList<String> values = iRecord.getListValues();
+		// set a buffer
+		ByteBuffer buffer = ByteBuffer.wrap(ioBuffer);
+		// get the position
+		buffer.position(iSlotIdx);
+		
+		for(int i = 0; i<type_checkCol.size(); i++) {
+			String type_check = type_checkCol.get(i);
+			String val_check = values.get(i);
+			
+			int val_Int;
+			float val_Float;
+			String val_String;
+			
+			switch(type_check.toLowerCase()) {
+				case "int" : 
+					val_Int = Integer.parseInt(val_check);
+					buffer.putInt(val_Int);
+					break;
+				case "float" : 
+					val_Float = Float.parseFloat(val_check);
+					buffer.putFloat(val_Float);
+					break;
+				default : 
+					int longueurString = Integer.parseInt(type_check.substring(6));
+					val_String = val_check;
+					for(int j = 0; j<longueurString; j++) {
+						buffer.putChar(val_String.charAt(j));
+					}
+			}
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
 	public void insertRecord(Record r) {
 		// TODO Auto-generated method stub
 		
