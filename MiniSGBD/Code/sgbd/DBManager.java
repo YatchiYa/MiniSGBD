@@ -24,6 +24,22 @@ public class DBManager {
 	private static FileManager file;
 	private static ArrayList<HeapFile> listeHeapFile;
 
+	public static FileManager getFile() {
+		return file;
+	}
+
+	public static void setFile(FileManager file) {
+		DBManager.file = file;
+	}
+
+	public static ArrayList<HeapFile> getListeHeapFile() {
+		return listeHeapFile;
+	}
+
+	public static void setListeHeapFile(ArrayList<HeapFile> listeHeapFile) {
+		DBManager.listeHeapFile = listeHeapFile;
+	}
+
 	public DBManager() {
 		// constructor
 	}
@@ -32,11 +48,9 @@ public class DBManager {
 		// the init function
 		// DBDef.getInstance();
 		
-		//creation de la dbDef
-		db = new DBDef();
-		
-		db.init();
-		FileManager.init(db);
+		//creation de la dbDef		
+		DBDef.init();
+		FileManager.init();
 	}
 	
 	public void finish() throws FileNotFoundException, IOException {
@@ -62,9 +76,7 @@ public class DBManager {
 		
 		
 		int recordSize =0;
-		/** on determine la taille d'un recordSize par rapport au TypeC 
-			4 pour les int, 4 pour les float, et x*2 pour les stringx
-		 **/
+
 		for(String s :typeC) {
 			switch (s.toLowerCase()) {
 			case "int" :case"float" :recordSize+=4;
@@ -72,9 +84,6 @@ public class DBManager {
 			default :recordSize+= 2*Integer.parseInt(s.substring(6));  //on récupére le chiffre du StringT c'est le T
 			}
 		}
-		//On determine le nombre de cases sur une page qui est calculable si 
-		//on connaît la taille d’un record et la taille d’une page PageSize
-		//et sachant que chaque case represente un octet dans la bytemap
 		int slotCount= constants.Constants.pageSize/(recordSize+1);
 		
 		
@@ -86,8 +95,17 @@ public class DBManager {
 		// incrementer le countRel  de la DBDef
 		db.incrementCount();
 		
-		System.out.println("add relation Done");
+		HeapFile heapFile = new HeapFile(relDef);
+		listeHeapFile.add(heapFile);
+		FileManager f = new FileManager();
+		f.setListeHeapFile(listeHeapFile);
+		try {
+			f.createNewHeapFile(relDef);
+		}catch (Exception e) {
+			System.out.println(e);
+		}
 		
+		System.out.println("add relation Done");
 		
 	}
 
