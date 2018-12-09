@@ -64,7 +64,7 @@ public class HeapFile {
 	
 	
 	
-	public void getFreePageId(PageId oPageId) throws IOException {
+	public PageId getFreePageId() throws IOException {
 
 		int FileId = relation.getFileIdx();
 		
@@ -89,28 +89,37 @@ public class HeapFile {
 				// PageId newPage = DiskManager.addPage(relation.getFileId());
 				PageId newPage=  new PageId(FileId, indice); 	
 				
-				oPageId.setFileIdx(newPage.getFileIdx());
+				newPage.setFileIdx(newPage.getFileIdx());
 				
 				System.out.println("pas de modif");
 				BufferManager.freePageId(hp, 0);
+
+				return newPage;
 								
 			}else {
-				DiskManager.AddPage(oPageId.getPageIdx());  //pkoi ? je sais pas 
-				
-				
-				headerPageInfo.addSlot(relation.getSlotCount()); // recuperer le nombre de slot 
-				headerPageInfo.addPageIdx(oPageId.getPageIdx()); // recuperer le id de l'ajout
-				headerPageInfo.incrDataPageCount(); // on incremente le nombre de page dispo
+				PageId newPage=  new PageId(FileId, indice); 
+				addPage(newPage, headerPageInfo, hp, bufferHeaderPage);
 
-				headerPageInfo.writeToBuffer(bufferHeaderPage, headerPageInfo);
-				
-				System.out.println(" modif");
-				BufferManager.freePageId(hp, 1);
+				return newPage;
 			}
 		}
+		return null;
 		
 	}
 	 
+	public void addPage(PageId oPageId, HeaderPageInfo headerPageInfo, PageId hp,byte[] bufferHeaderPage) throws IOException {
+		DiskManager.AddPage(oPageId.getPageIdx());  //pkoi ? je sais pas 
+		
+		
+		headerPageInfo.addSlot(relation.getSlotCount()); // recuperer le nombre de slot 
+		headerPageInfo.addPageIdx(oPageId.getPageIdx()); // recuperer le id de l'ajout
+		headerPageInfo.incrDataPageCount(); // on incremente le nombre de page dispo
+
+		headerPageInfo.writeToBuffer(bufferHeaderPage, headerPageInfo);
+		
+		System.out.println(" modif");
+		BufferManager.freePageId(hp, 1);
+	}
 	/**
 	 * 
 	 * @param iPageId
@@ -244,10 +253,15 @@ public class HeapFile {
 	
 	
 	
-	public void insertRecord(Record r) {
-		
-		
+	public void insertRecord(Record iRecord) throws IOException {
+		PageId saveRecordPlace = getFreePageId();
+		// insert part !! 
+		insertRecordInPage(iRecord, saveRecordPlace);
+		updateHeaderWithTakenSlot(saveRecordPlace);
 	}
+	
+	
+	
 
 	
 	
