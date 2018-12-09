@@ -1,5 +1,6 @@
 package sgbd;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 import Schema.PageId;
@@ -119,14 +120,54 @@ public class HeapFile {
 		int FileIdxHP = relation.getFileIdx();
 		//on crée une instance de headerPage
 		PageId hp=  new PageId(FileIdxHP,0);
+		// on construit le buffer 
 		byte[ ] bufferHeaderPage = BufferManager.getPage(hp);
+		// on initialise le headerPage 
 		HeaderPageInfo headerPageInfo = new HeaderPageInfo(0);
+		
+		// lecture du headerPage
+		ByteBuffer buffer = ByteBuffer.wrap(bufferHeaderPage);
+				
+			// get nb de page
+			int nbPage = buffer.getInt();
+			headerPageInfo.setDataPageCount(nbPage);
+			
+			// read indiceX/ nb_slot dispo -> 8bits
+			for(int i = 0; i<nbPage; i++) {
+				Integer indiceX = new Integer(buffer.getInt());
+				Integer nb_slot = new Integer(buffer.getInt());
+				
+				headerPageInfo.addPageIdx(indiceX);
+				headerPageInfo.addSlot(nb_slot);
+			}
+		
+			Integer iSearch = new Integer(iPageId.getPageIdx());
+			boolean find = headerPageInfo.decrDataPageCount(iSearch);
+			if(!find) {
+				System.out.println("*** Erreur ! Cette page n'est pas présente ! ***\n");
+				BufferManager.freePageId(hp, 0);
+			}
+			else {				
+				buffer.putInt(headerPageInfo.getDataPageCount());
+				
+				ArrayList<Integer> indice_tab = headerPageInfo.getPageIdx();
+				ArrayList<Integer> nb_slot = headerPageInfo.getFreeSlot();
+				
+				for(int i = 0; i<indice_tab.size(); i++) {
+					buffer.putInt(indice_tab.get(i).intValue());
+					buffer.putInt(nb_slot.get(i).intValue());
+				}
+
+				BufferManager.freePageId(hp, 1);
+			}
+		
 	}
 
 	public void insertRecord(Record r) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 	
 }

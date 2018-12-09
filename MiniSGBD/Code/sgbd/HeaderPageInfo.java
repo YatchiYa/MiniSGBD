@@ -20,9 +20,24 @@ public class HeaderPageInfo {
 		public HeaderPageInfo() {
 			this(0);
 		}
-		
+
 		public void incrDataPageCount() {
 			dataPageCount++;
+		}
+		public boolean decrDataPageCount(Integer i) {
+			boolean check = false;
+			
+			int indice = pageIdx.indexOf(i);
+			
+			if(indice!=-1) {
+				int n = freeSlot.get(indice).intValue();
+				n--;
+				Integer newNb = new Integer(n);
+				freeSlot.set(indice, newNb);
+				check = true;
+			}
+			
+			return check;
 		}
 		
 		public void addSlot(Integer i) {

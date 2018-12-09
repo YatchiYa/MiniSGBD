@@ -3,7 +3,7 @@ package rel;
 import java.util.ArrayList;
 
 public class Record {
-	private ArrayList<String> values;
+	public ArrayList<String> values;
 
 	
 	
